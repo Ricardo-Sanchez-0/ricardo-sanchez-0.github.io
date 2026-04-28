@@ -1,45 +1,544 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name</title>
+  <title>Ricardo Sanchez — Neuroengineering Portfolio</title>
+  <meta name="description" content="Research portfolio for Ricardo Sanchez focused on neuromodulation, peripheral nerve stimulation, electrochemical safety, imaging-guided devices, and translational neuroengineering." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-      line-height: 1.6;
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+      --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+      --color-bg: #f7f6f2; --color-surface: #f9f8f5; --color-surface-2: #fbfbf9;
+      --color-surface-offset: #f3f0ec; --color-border: #d4d1ca; --color-divider: #dcd9d5;
+      --color-text: #28251d; --color-text-muted: #67645e; --color-text-faint: #a8a49c;
+      --color-text-inverse: #f9f8f4; --color-primary: #01696f; --color-primary-hover: #0c4e54;
+      --color-primary-highlight: #cedcd8; --radius-sm: 0.375rem; --radius-md: 0.5rem;
+      --radius-lg: 0.75rem; --radius-xl: 1rem; --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.08); --shadow-md: 0 8px 22px rgba(0,0,0,0.12);
+      --shadow-lg: 0 18px 44px rgba(0,0,0,0.18); --font-display: 'Instrument Serif', Georgia, serif;
+      --font-body: 'Inter', sans-serif; --content-wide: 1200px; --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
     }
-    h1 { margin-bottom: 0.25rem; }
-    nav a { margin-right: 1rem; }
-    section { margin-top: 2rem; }
+    [data-theme="dark"] {
+      --color-bg: #0f1116; --color-surface: #151922; --color-surface-2: #191f2a;
+      --color-surface-offset: #1e2531; --color-border: rgba(255,255,255,0.09); --color-divider: rgba(255,255,255,0.08);
+      --color-text: #f2f4f8; --color-text-muted: #a1aab8; --color-text-faint: #697180;
+      --color-text-inverse: #10131a; --color-primary: #4f98a3; --color-primary-hover: #6aaebb;
+      --color-primary-highlight: rgba(79, 152, 163, 0.14); --shadow-sm: 0 1px 2px rgba(0,0,0,0.22);
+      --shadow-md: 0 10px 28px rgba(0,0,0,0.28); --shadow-lg: 0 24px 60px rgba(0,0,0,0.34);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; min-height: 100vh; background: radial-gradient(circle at top right, rgba(79,152,163,0.12), transparent 25%), var(--color-bg);
+      color: var(--color-text); font-family: var(--font-body); font-size: var(--text-base); line-height: 1.65;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+    .app {
+      width: min(100%, 1480px); margin: 0 auto; padding: var(--space-6);
+      display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: var(--space-6);
+    }
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 100%), var(--color-surface);
+      border: 1px solid var(--color-border); border-radius: calc(var(--radius-xl) + 6px); box-shadow: var(--shadow-md);
+    }
+    .sidebar {
+      position: sticky; top: var(--space-6); align-self: start; overflow: hidden;
+    }
+    .sidebar-inner { padding: var(--space-8); }
+    .avatar {
+      width: 112px; height: 112px; border-radius: 28px; margin-bottom: var(--space-6);
+      display: grid; place-items: center; background: linear-gradient(135deg, rgba(79,152,163,0.28), rgba(255,255,255,0.05));
+      border: 1px solid rgba(255,255,255,0.08); color: var(--color-text); font-size: 2rem; font-weight: 800;
+    }
+    .eyebrow, .meta-label { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-text-faint); }
+    h1, h2, h3 { margin: 0; line-height: 1.08; }
+    .name { font-family: var(--font-display); font-size: var(--text-2xl); margin-bottom: var(--space-3); }
+    .role { color: var(--color-text-muted); margin-bottom: var(--space-6); max-width: 24ch; }
+    .sidebar-blurb { color: var(--color-text-muted); margin-bottom: var(--space-8); }
+    .stack { display: grid; gap: var(--space-4); }
+    .stat-card, .contact-card {
+      padding: var(--space-4); border-radius: var(--radius-lg); background: var(--color-surface-2); border: 1px solid var(--color-border);
+    }
+    .stat-value { font-size: var(--text-lg); font-weight: 700; margin-top: var(--space-2); }
+    .contact-row { display: flex; justify-content: space-between; gap: var(--space-3); color: var(--color-text-muted); }
+    .sidebar-nav { margin: var(--space-8) 0; display: grid; gap: var(--space-2); }
+    .sidebar-nav a {
+      padding: 0.95rem 1rem; border-radius: var(--radius-lg); color: var(--color-text-muted); border: 1px solid transparent;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .sidebar-nav a:hover, .sidebar-nav a.active {
+      color: var(--color-text); background: var(--color-primary-highlight); border-color: rgba(79,152,163,0.25); transform: translateX(3px);
+    }
+    .button-row { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+    .btn {
+      min-height: 44px; padding: 0.9rem 1.15rem; border-radius: var(--radius-full); border: 1px solid var(--color-border);
+      display: inline-flex; align-items: center; gap: 0.65rem; transition: all var(--transition);
+    }
+    .btn-primary { background: var(--color-primary); color: white; border-color: transparent; }
+    .btn-primary:hover { background: var(--color-primary-hover); transform: translateY(-1px); }
+    .btn-secondary { background: transparent; color: var(--color-text); }
+    .btn-secondary:hover { background: var(--color-surface-2); }
+    .content { min-width: 0; }
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center; padding: var(--space-5) var(--space-6); margin-bottom: var(--space-6);
+    }
+    .logo { display: inline-flex; align-items: center; gap: var(--space-3); font-weight: 700; }
+    .logo-mark { width: 32px; height: 32px; color: var(--color-primary); }
+    .theme-toggle {
+      width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--color-border); background: var(--color-surface-2); color: var(--color-text);
+    }
+    main { display: grid; gap: var(--space-6); }
+    .hero, .section { padding: clamp(var(--space-8), 3vw, var(--space-12)); }
+    .hero-grid {
+      display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr); gap: var(--space-8); align-items: end;
+    }
+    .hero-copy h2 { font-family: var(--font-display); font-size: clamp(2.5rem, 1.2rem + 4vw, 5.25rem); margin-bottom: var(--space-5); max-width: 10ch; }
+    .hero-copy p { max-width: 62ch; color: var(--color-text-muted); margin-bottom: var(--space-8); }
+    .hero-card {
+      background: linear-gradient(180deg, rgba(79,152,163,0.16), rgba(79,152,163,0.04)); border: 1px solid rgba(79,152,163,0.22);
+      border-radius: calc(var(--radius-xl) + 8px); padding: var(--space-6); min-height: 100%;
+    }
+    .hero-metrics { display: grid; gap: var(--space-4); }
+    .metric { display: flex; justify-content: space-between; gap: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-divider); }
+    .metric:last-child { border-bottom: 0; padding-bottom: 0; }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: var(--space-4); margin-bottom: var(--space-8); }
+    .section-heading h3 { font-size: var(--text-xl); }
+    .section-heading p { color: var(--color-text-muted); max-width: 52ch; margin: 0; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); }
+    .card {
+      background: var(--color-surface-2); border: 1px solid var(--color-border); border-radius: calc(var(--radius-lg) + 2px);
+      padding: var(--space-5); box-shadow: var(--shadow-sm);
+    }
+    .card h4 { margin-bottom: var(--space-3); font-size: var(--text-lg); }
+    .card p { color: var(--color-text-muted); margin: 0 0 var(--space-4); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+    .tag {
+      display: inline-flex; padding: 0.45rem 0.7rem; border-radius: var(--radius-full); font-size: var(--text-xs);
+      background: rgba(79,152,163,0.12); color: #9ed0d8; border: 1px solid rgba(79,152,163,0.16);
+    }
+    .timeline { display: grid; gap: var(--space-5); position: relative; }
+    .timeline-item {
+      display: grid; grid-template-columns: 120px minmax(0,1fr); gap: var(--space-5); align-items: start;
+      padding-bottom: var(--space-5); border-bottom: 1px solid var(--color-divider);
+    }
+    .timeline-item:last-child { border-bottom: 0; padding-bottom: 0; }
+    .timeline-year { color: var(--color-text-faint); font-size: var(--text-sm); padding-top: 0.3rem; }
+    .project-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--space-5); }
+    .project-large { grid-column: span 7; }
+    .project-small { grid-column: span 5; }
+    .project-card {
+      min-height: 100%; display: flex; flex-direction: column; justify-content: space-between;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)), var(--color-surface-2);
+    }
+    .project-top { display: flex; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-6); }
+    .project-index { font-family: var(--font-display); font-size: 2rem; color: var(--color-primary-hover); }
+    .publication-list { display: grid; gap: var(--space-4); }
+    .publication {
+      display: grid; grid-template-columns: 1fr auto; gap: var(--space-4); align-items: start;
+      padding: var(--space-5); border-radius: var(--radius-lg); background: var(--color-surface-2); border: 1px solid var(--color-border);
+    }
+    .publication p { margin: 0.35rem 0 0; color: var(--color-text-muted); }
+    .pub-status { font-size: var(--text-xs); color: #a4dce4; background: rgba(79,152,163,0.12); border: 1px solid rgba(79,152,163,0.18); padding: 0.45rem 0.65rem; border-radius: var(--radius-full); }
+    .footer { text-align: center; color: var(--color-text-faint); padding: var(--space-8) var(--space-4); }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 700ms ease, transform 700ms ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .mobile-nav { display: none; }
+    .skip-link {
+      position: absolute; left: -999px; top: 0; background: var(--color-primary); color: white; padding: 0.75rem 1rem; z-index: 10;
+    }
+    .skip-link:focus { left: 1rem; top: 1rem; }
+    @media (max-width: 1100px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .hero-grid, .grid-2 { grid-template-columns: 1fr; }
+      .project-large, .project-small { grid-column: span 12; }
+    }
+    @media (max-width: 760px) {
+      .app { padding: var(--space-3); }
+      .sidebar-inner, .hero, .section { padding: var(--space-5); }
+      .topbar { padding: var(--space-4) var(--space-5); }
+      .timeline-item, .publication { grid-template-columns: 1fr; }
+      .button-row { flex-direction: column; }
+      .btn { justify-content: center; width: 100%; }
+      .sidebar-nav { display: none; }
+      .mobile-nav {
+        display: flex; gap: 0.5rem; overflow-x: auto; padding: 0 var(--space-5) var(--space-5); margin-top: -0.25rem;
+      }
+      .mobile-nav a {
+        white-space: nowrap; padding: 0.75rem 1rem; border-radius: var(--radius-full); background: var(--color-surface-2);
+        border: 1px solid var(--color-border); color: var(--color-text-muted);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .sidebar-nav a, .btn { transition: none; }
+    }
   </style>
 </head>
 <body>
-  <h1>Your Name</h1>
-  <p>PhD student working in neuromodulation, peripheral nerve stimulation, and medical device development.</p>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="app">
+    <aside class="sidebar panel">
+      <div class="sidebar-inner">
+        <div class="avatar" aria-hidden="true">RS</div>
+        <div class="eyebrow">Neuroengineering</div>
+        <h1 class="name">Ricardo Sanchez</h1>
+        <p class="role">PhD researcher building neuromodulation systems, stimulation tools, and translational device strategies.</p>
+        <p class="sidebar-blurb">Focused on peripheral nerve stimulation, electrochemical safety, PS-OCT imaging, image-guided injection devices, nerve modeling, and bladder neuromodulation.</p>
 
-  <nav>
-    <a href="#research">Research</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+        <div class="stack" aria-label="Quick stats">
+          <div class="stat-card">
+            <div class="meta-label">Primary focus</div>
+            <div class="stat-value">Translational neurodevices</div>
+          </div>
+          <div class="stat-card">
+            <div class="meta-label">Current base</div>
+            <div class="stat-value">UW–Madison</div>
+          </div>
+        </div>
 
-  <section id="research">
-    <h2>Research</h2>
-    <p>Short description of your work.</p>
-  </section>
+        <nav class="sidebar-nav" aria-label="Section navigation">
+          <a href="#about" class="active">About</a>
+          <a href="#research">Research</a>
+          <a href="#projects">Projects</a>
+          <a href="#resume">Resume</a>
+          <a href="#publications">Publications</a>
+          <a href="#contact">Contact</a>
+        </nav>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <p>Add 3–5 projects with one sentence each.</p>
-  </section>
+        <div class="contact-card stack">
+          <div class="contact-row"><span>Email</span><span>you@wisc.edu</span></div>
+          <div class="contact-row"><span>GitHub</span><span>github.com/ricardo-sanchez-0</span></div>
+          <div class="contact-row"><span>Location</span><span>Madison, WI</span></div>
+        </div>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email, GitHub, Scholar, LinkedIn.</p>
-  </section>
+        <div class="button-row" style="margin-top: var(--space-6);">
+          <a class="btn btn-primary" href="#contact">Start a conversation</a>
+          <a class="btn btn-secondary" href="#projects">View projects</a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="content">
+      <header class="topbar panel">
+        <div class="logo" aria-label="Ricardo Sanchez portfolio logo">
+          <svg class="logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RS monogram logo">
+            <rect x="3" y="3" width="42" height="42" rx="14" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M15 31V17H25.2C28.1 17 30 18.7 30 21.2C30 23.4 28.6 24.8 26.5 25.2L31.5 31" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M33 17C28.8 17 26 19.9 26 24C26 28.1 28.8 31 33 31" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <span>RS / Neuroengineering Portfolio</span>
+        </div>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">☾</button>
+      </header>
+
+      <nav class="mobile-nav panel" aria-label="Mobile section navigation">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <main id="main-content">
+        <section class="hero panel reveal" id="about">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <div class="eyebrow">About</div>
+              <h2>Engineering neuromodulation systems that survive contact with reality.</h2>
+              <p>I study how stimulation systems behave when anatomy, device constraints, electrochemistry, and clinical workflow stop being abstract assumptions and start becoming design limits. My work sits between neural engineering, translational device development, and practical experimentation.</p>
+              <div class="button-row">
+                <a class="btn btn-primary" href="#publications">Selected publications</a>
+                <a class="btn btn-secondary" href="#resume">Experience timeline</a>
+              </div>
+            </div>
+            <div class="hero-card">
+              <div class="eyebrow" style="margin-bottom: var(--space-4);">Current emphasis</div>
+              <div class="hero-metrics">
+                <div class="metric"><span>Peripheral nerve stimulation</span><strong>Mechanisms + safety</strong></div>
+                <div class="metric"><span>Electrode performance</span><strong>Electrochemical boundaries</strong></div>
+                <div class="metric"><span>Image-guided systems</span><strong>Procedure-aware design</strong></div>
+                <div class="metric"><span>Application target</span><strong>Bladder neuromodulation</strong></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section panel reveal" id="research">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Research areas</div>
+              <h3>Workstreams that matter</h3>
+            </div>
+            <p>This section should stay brutally selective. Generic categories make you look unfocused; tight categories make you look deliberate.</p>
+          </div>
+          <div class="grid-2">
+            <article class="card">
+              <h4>Neuromodulation and peripheral nerve stimulation</h4>
+              <p>Studying recruitment, selectivity, stimulation parameter spaces, and translational use cases where electrophysiology and anatomy both constrain what is actually viable.</p>
+              <div class="tag-row">
+                <span class="tag">Afferent recruitment</span>
+                <span class="tag">Fiber selectivity</span>
+                <span class="tag">OAB therapies</span>
+              </div>
+            </article>
+            <article class="card">
+              <h4>Electrochemical safety and electrode behavior</h4>
+              <p>Evaluating charge injection limits, material stability, surface behavior, and the nonsense assumptions people make when they talk about safe stimulation without enough context.</p>
+              <div class="tag-row">
+                <span class="tag">EIS / CV</span>
+                <span class="tag">Charge density</span>
+                <span class="tag">Failure modes</span>
+              </div>
+            </article>
+            <article class="card">
+              <h4>Image-guided neurodevice workflows</h4>
+              <p>Building device concepts where visualization is not an afterthought, including injection systems and PS-OCT-informed approaches for targeting and procedural feedback.</p>
+              <div class="tag-row">
+                <span class="tag">PS-OCT</span>
+                <span class="tag">Needle guidance</span>
+                <span class="tag">Targeting</span>
+              </div>
+            </article>
+            <article class="card">
+              <h4>Modeling for translational decisions</h4>
+              <p>Using models to answer decisions that experiments alone cannot cover efficiently, especially when geometry, stimulation fields, and tissue interaction affect what device design should do next.</p>
+              <div class="tag-row">
+                <span class="tag">Field models</span>
+                <span class="tag">Nerve geometry</span>
+                <span class="tag">Design iteration</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section panel reveal" id="projects">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Selected projects</div>
+              <h3>Case studies and active builds</h3>
+            </div>
+            <p>The point is not to list everything you touched. The point is to show technical judgment, constraints, and outcomes.</p>
+          </div>
+          <div class="project-grid">
+            <article class="card project-card project-large">
+              <div>
+                <div class="project-top">
+                  <div>
+                    <div class="eyebrow">01 / Featured</div>
+                    <h4>Tibial nerve stimulation for bladder modulation</h4>
+                  </div>
+                  <div class="project-index">A</div>
+                </div>
+                <p>Built around translational questions instead of just proof-of-concept metrics: what fibers are likely engaged, how parameter choices alter feasibility, and how that links to overactive bladder and neurogenic indications.</p>
+              </div>
+              <div class="tag-row">
+                <span class="tag">TNS</span>
+                <span class="tag">OAB</span>
+                <span class="tag">Clinical translation</span>
+              </div>
+            </article>
+            <article class="card project-card project-small">
+              <div>
+                <div class="project-top">
+                  <div>
+                    <div class="eyebrow">02</div>
+                    <h4>Electrode safety envelopes</h4>
+                  </div>
+                  <div class="project-index">B</div>
+                </div>
+                <p>Interrogating where stimulation claims break down once electrochemical limits, soak conditions, and surface behavior are treated as first-order engineering constraints.</p>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Materials</span>
+                <span class="tag">Safety</span>
+              </div>
+            </article>
+            <article class="card project-card project-small">
+              <div>
+                <div class="project-top">
+                  <div>
+                    <div class="eyebrow">03</div>
+                    <h4>Image-guided injection device concepts</h4>
+                  </div>
+                  <div class="project-index">C</div>
+                </div>
+                <p>Exploring device architecture for anatomy-aware delivery workflows where targeting error and usability matter as much as raw technical novelty.</p>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Guidance</span>
+                <span class="tag">Procedure design</span>
+              </div>
+            </article>
+            <article class="card project-card project-large">
+              <div>
+                <div class="project-top">
+                  <div>
+                    <div class="eyebrow">04</div>
+                    <h4>Nerve modeling and stimulation interpretation</h4>
+                  </div>
+                  <div class="project-index">D</div>
+                </div>
+                <p>Using computational framing to test assumptions around nerve geometry, electric fields, and what a given recording or behavioral readout does and does not imply.</p>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Modeling</span>
+                <span class="tag">COMSOL</span>
+                <span class="tag">Interpretation</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section panel reveal" id="resume">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Resume</div>
+              <h3>Timeline</h3>
+            </div>
+            <p>Keep this factual and sharp. Nobody wants a wall of self-congratulation.</p>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-year">Current</div>
+              <div>
+                <h4>PhD researcher, Kip Ludwig lab</h4>
+                <p>Working on neuromodulation, electrochemical safety, peripheral nerve stimulation, image-guided systems, and bladder-focused neuroengineering.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">Recent</div>
+              <div>
+                <h4>BCI and signal analysis work</h4>
+                <p>Applied Python workflows to experimental data processing, classification pipelines, and technically messy datasets that do not clean themselves.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">Recent</div>
+              <div>
+                <h4>Hackathon recognition</h4>
+                <p>Part of a BR41N.IO BCI Designer’s Hackathon team that placed third, showing you can execute under constraints rather than just theorize in a vacuum.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section panel reveal" id="publications">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Publications</div>
+              <h3>Selected outputs</h3>
+            </div>
+            <p>Replace the placeholder items below with real papers, posters, patents, talks, and preprints. Do not leave fake entries on a live website.</p>
+          </div>
+          <div class="publication-list">
+            <article class="publication">
+              <div>
+                <h4>Paper title or preprint title goes here</h4>
+                <p>Journal / conference / preprint server · Co-authors · Year</p>
+              </div>
+              <span class="pub-status">Update me</span>
+            </article>
+            <article class="publication">
+              <div>
+                <h4>Poster or conference abstract title goes here</h4>
+                <p>Venue · Session · Year</p>
+              </div>
+              <span class="pub-status">Update me</span>
+            </article>
+            <article class="publication">
+              <div>
+                <h4>Patent, technical report, or major project artifact</h4>
+                <p>Status · Collaborators · Link target</p>
+              </div>
+              <span class="pub-status">Update me</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="section panel reveal" id="contact">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">Contact</div>
+              <h3>Make it easy to reach you</h3>
+            </div>
+            <p>Do not hide behind a dead form. A simple email link and a few clear outbound links are enough for a researcher portfolio.</p>
+          </div>
+          <div class="grid-2">
+            <div class="card">
+              <h4>Direct contact</h4>
+              <p>Email is still the cleanest option for academic and industry conversations.</p>
+              <div class="button-row">
+                <a class="btn btn-primary" href="mailto:you@wisc.edu">Email Ricardo</a>
+                <a class="btn btn-secondary" href="https://github.com/ricardo-sanchez-0" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+            <div class="card">
+              <h4>Before you publish this</h4>
+              <p>Replace placeholder contact details, add a real CV PDF link, insert actual publications, and swap any vague project text with evidence-backed case studies. Otherwise the design will be fine and the substance will still look half-finished.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        Built as a static HTML/CSS/JS portfolio for GitHub Pages. Edit the text aggressively until it sounds like you instead of a template.
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const toggle = document.querySelector('[data-theme-toggle]');
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+      const updateToggle = () => { toggle.textContent = theme === 'dark' ? '☾' : '☀'; };
+      updateToggle();
+      toggle.addEventListener('click', () => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        updateToggle();
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      const navLinks = document.querySelectorAll('.sidebar-nav a');
+      const sections = [...document.querySelectorAll('main section[id]')];
+      const setActive = () => {
+        const position = window.scrollY + window.innerHeight * 0.2;
+        let current = sections[0]?.id;
+        sections.forEach(section => {
+          if (position >= section.offsetTop) current = section.id;
+        });
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+        });
+      };
+      setActive();
+      window.addEventListener('scroll', setActive, { passive: true });
+    })();
+  </script>
 </body>
 </html>
