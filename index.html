@@ -174,22 +174,15 @@
       padding: var(--space-8);
     }
 
-    .avatar {
+    .avatar-photo {
       width: 112px;
       height: 112px;
       border-radius: 28px;
       margin-bottom: var(--space-6);
-      display: grid;
-      place-items: center;
-      background: linear-gradient(
-        135deg,
-        rgba(79, 152, 163, 0.28),
-        rgba(255, 255, 255, 0.05)
-      );
+      object-fit: cover;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--color-text);
-      font-size: 2rem;
-      font-weight: 800;
+      background: var(--color-surface-2);
+      box-shadow: var(--shadow-sm);
     }
 
     .eyebrow,
@@ -679,7 +672,15 @@
   <div class="app">
     <aside class="sidebar panel">
       <div class="sidebar-inner">
-        <div class="avatar" aria-hidden="true">RS</div>
+        <img
+          class="avatar-photo"
+          src="./assets/profile.jpg"
+          alt="Portrait of Ricardo Sanchez"
+          width="112"
+          height="112"
+          loading="eager"
+          decoding="async"
+        />
         <div class="eyebrow">Neuroengineering</div>
         <h1 class="name">Ricardo Sanchez</h1>
         <p class="role">
@@ -1096,8 +1097,8 @@
               <h3>Selected outputs</h3>
             </div>
             <p>
-              This section now includes confirmed items only. Patent and additional paper entries should
-              be added once your role and citation details are confirmed precisely.
+              This section includes confirmed items only. Add the patent and additional paper once the
+              exact role and citation details are confirmed.
             </p>
           </div>
 
