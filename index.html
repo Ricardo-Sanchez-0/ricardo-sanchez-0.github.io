@@ -1,378 +1,868 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>My Portfolio</title>
-<style>
-  :root {
-    --bg: #0a0a0f;
-    --bg2: #12121a;
-    --bg3: #1a1a26;
-    --accent: #7c5cfc;
-    --accent2: #a78bfa;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --border: rgba(124,92,252,0.2);
-    --card: #16161f;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ricardo Sanchez - Neuroengineering Portfolio</title>
+  <meta
+    name="description"
+    content="Research portfolio for Ricardo Sanchez focused on neuromodulation, peripheral nerve stimulation, electrochemical safety, PS-OCT-guided devices, and translational neuroengineering."
+  />
+  <link rel="icon" type="image/png" href="./assets/Website_Icon_v1.png" />
+  <link rel="apple-touch-icon" href="./assets/Website_Icon_v1.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #0f1116;
+      --bg2: #151922;
+      --bg3: #191f2a;
+      --card: #1e2531;
+      --accent: #4f98a3;
+      --accent2: #9ed0d8;
+      --accent-soft: rgba(79, 152, 163, 0.14);
+      --text: #f2f4f8;
+      --muted: #a1aab8;
+      --faint: #697180;
+      --border: rgba(255, 255, 255, 0.09);
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+      --radius: 8px;
+      --font-display: "Instrument Serif", Georgia, serif;
+      --font-body: "Inter", system-ui, sans-serif;
+    }
 
-  /* NAV */
-  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(10,10,15,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
-  .logo{font-size:1.3rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-  .nav-links{display:flex;gap:2rem;list-style:none;}
-  .nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;letter-spacing:.05em;transition:.3s;}
-  .nav-links a:hover{color:var(--accent2);}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: radial-gradient(circle at top right, rgba(79, 152, 163, 0.12), transparent 28%), var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.65;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
 
-  /* HERO */
-  .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;position:relative;overflow:hidden;}
-  .hero::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(124,92,252,.15),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
-  .hero-inner{max-width:700px;position:relative;}
-  .hero-badge{display:inline-block;padding:.3rem 1rem;border:1px solid var(--border);border-radius:999px;font-size:.8rem;color:var(--accent2);margin-bottom:1.5rem;letter-spacing:.1em;}
-  .hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;margin-bottom:1rem;}
-  .hero h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-  .hero p{color:var(--muted);font-size:1.1rem;margin-bottom:2rem;}
-  .btn{display:inline-block;padding:.75rem 2rem;border-radius:8px;text-decoration:none;font-weight:600;transition:.3s;cursor:pointer;border:none;font-size:1rem;}
-  .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;}
-  .btn-primary:hover{opacity:.85;transform:translateY(-2px);}
-  .btn-outline{background:transparent;border:1px solid var(--border);color:var(--text);margin-left:1rem;}
-  .btn-outline:hover{border-color:var(--accent2);color:var(--accent2);}
-  .hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(15, 17, 22, 0.86);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 2rem;
+    }
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+    .logo img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fff;
+      border: 1px solid var(--border);
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition: color 180ms ease;
+    }
+    .nav-links a:hover { color: var(--accent2); }
 
-  /* SECTIONS */
-  section{padding:6rem 2rem;}
-  .container{max-width:1100px;margin:0 auto;}
-  .section-label{font-size:.8rem;letter-spacing:.15em;color:var(--accent2);text-transform:uppercase;margin-bottom:.5rem;}
-  .section-title{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;margin-bottom:1rem;}
-  .section-title span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-  .divider{width:60px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:99px;margin-bottom:3rem;}
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 620px;
+      height: 620px;
+      background: radial-gradient(circle, rgba(79, 152, 163, 0.18), transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 900px;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 1rem;
+      border: 1px solid rgba(79, 152, 163, 0.28);
+      border-radius: 999px;
+      color: var(--accent2);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      background: var(--accent-soft);
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3.4rem, 8vw, 6.8rem);
+      font-weight: 400;
+      line-height: 0.95;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 span { color: var(--accent2); }
+    .hero p {
+      color: var(--muted);
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      max-width: 760px;
+      margin: 0 auto 2rem;
+    }
+    .hero-btns {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0.8rem 1.25rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-weight: 700;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+    .btn-primary {
+      background: var(--accent);
+      border-color: transparent;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #6aaebb;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      color: var(--text);
+      background: transparent;
+    }
+    .btn-outline:hover {
+      border-color: var(--accent2);
+      color: var(--accent2);
+      transform: translateY(-2px);
+    }
 
-  /* ABOUT */
-  .about-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:center;}
-  .about-img-wrap{position:relative;}
-  .about-img{width:100%;border-radius:16px;aspect-ratio:1;object-fit:cover;border:2px solid var(--border);}
-  .about-img-placeholder{width:100%;aspect-ratio:1;border-radius:16px;background:var(--bg3);border:2px dashed var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-size:.9rem;gap:.5rem;}
-  .about-img-placeholder svg{opacity:.4;}
-  .skills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem;}
-  .skill-tag{padding:.35rem .85rem;border-radius:999px;font-size:.8rem;border:1px solid var(--border);color:var(--accent2);background:rgba(124,92,252,.05);}
+    section { padding: 6rem 2rem; }
+    .section-alt { background: var(--bg2); }
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      color: var(--accent2);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .section-title span { color: var(--accent2); }
+    .section-intro {
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 2.5rem;
+    }
+    .divider {
+      width: 64px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 999px;
+      margin-bottom: 2rem;
+    }
 
-  /* PROJECTS */
-  .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;}
-  .project-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:.3s;cursor:pointer;}
-  .project-card:hover{transform:translateY(-5px);border-color:var(--accent2);box-shadow:0 20px 40px rgba(124,92,252,.15);}
-  .project-img{width:100%;height:200px;object-fit:cover;}
-  .project-img-placeholder{width:100%;height:200px;background:var(--bg3);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.85rem;}
-  .project-body{padding:1.25rem;}
-  .project-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.75rem;}
-  .project-tag{font-size:.7rem;padding:.2rem .6rem;border-radius:999px;background:rgba(124,92,252,.1);color:var(--accent2);border:1px solid var(--border);}
-  .project-title{font-size:1.1rem;font-weight:700;margin-bottom:.4rem;}
-  .project-desc{color:var(--muted);font-size:.88rem;line-height:1.6;margin-bottom:1rem;}
-  .project-links{display:flex;gap:.75rem;}
-  .project-links a{font-size:.8rem;color:var(--accent2);text-decoration:none;border:1px solid var(--border);padding:.3rem .75rem;border-radius:6px;transition:.2s;}
-  .project-links a:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(240px, 0.72fr) 1.28fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      background: var(--bg3);
+    }
+    .skills, .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+    .skill-tag, .project-tag {
+      display: inline-flex;
+      padding: 0.42rem 0.72rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      color: var(--accent2);
+      background: var(--accent-soft);
+      border: 1px solid rgba(79, 152, 163, 0.2);
+    }
 
-  /* GALLERY */
-  .gallery-section{background:var(--bg2);}
-  .gallery-tabs{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;}
-  .tab-btn{padding:.5rem 1.25rem;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-size:.85rem;transition:.2s;}
-  .tab-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;}
-  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;}
-  .gallery-item{border-radius:10px;overflow:hidden;aspect-ratio:16/10;cursor:pointer;position:relative;background:var(--bg3);border:1px solid var(--border);}
-  .gallery-item img,.gallery-item iframe{width:100%;height:100%;object-fit:cover;transition:.3s;}
-  .gallery-item:hover img{transform:scale(1.05);}
-  .gallery-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;gap:.5rem;padding:1rem;text-align:center;}
-  .gallery-overlay{position:absolute;inset:0;background:rgba(0,0,0,.5);opacity:0;display:flex;align-items:center;justify-content:center;transition:.3s;}
-  .gallery-item:hover .gallery-overlay{opacity:1;}
+    .metrics-grid,
+    .research-grid,
+    .projects-grid,
+    .gallery-grid,
+    .contact-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+    .metrics-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 2rem; }
+    .research-grid, .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .projects-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 
-  /* LIGHTBOX */
-  .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;align-items:center;justify-content:center;}
-  .lightbox.open{display:flex;}
-  .lightbox-content{max-width:90vw;max-height:90vh;border-radius:12px;overflow:hidden;}
-  .lightbox-content img{max-width:90vw;max-height:85vh;object-fit:contain;display:block;}
-  .lightbox-close{position:fixed;top:1.5rem;right:2rem;font-size:2rem;color:#fff;cursor:pointer;z-index:1001;background:none;border:none;line-height:1;}
-  .lightbox-close:hover{color:var(--accent2);}
+    .card,
+    .project-card,
+    .gallery-item,
+    .metric-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent), var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+    }
+    .card, .metric-card { padding: 1.35rem; }
+    .metric-card .value {
+      margin-top: 0.35rem;
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+    .card h3,
+    .project-title,
+    .gallery-item h3 {
+      font-size: 1.08rem;
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+    .card p,
+    .project-desc,
+    .gallery-item p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
 
-  /* CONTACT */
-  .contact-inner{max-width:600px;margin:0 auto;text-align:center;}
-  .contact-inner p{color:var(--muted);margin-bottom:2rem;}
-  .contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;}
-  .contact-link{display:flex;align-items:center;gap:.5rem;padding:.7rem 1.4rem;border-radius:8px;border:1px solid var(--border);color:var(--text);text-decoration:none;font-size:.9rem;transition:.3s;}
-  .contact-link:hover{border-color:var(--accent2);color:var(--accent2);transform:translateY(-2px);}
+    .project-card {
+      overflow: hidden;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(158, 208, 216, 0.5);
+      box-shadow: 0 20px 46px rgba(79, 152, 163, 0.14);
+    }
+    .project-topper {
+      height: 118px;
+      padding: 1rem;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      background:
+        linear-gradient(135deg, rgba(79, 152, 163, 0.3), rgba(79, 152, 163, 0.04)),
+        var(--bg3);
+      border-bottom: 1px solid var(--border);
+    }
+    .project-index {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--accent2);
+      line-height: 0.85;
+    }
+    .project-body { padding: 1.35rem; }
+    .project-points,
+    .experience-points {
+      list-style: none;
+      display: grid;
+      gap: 0.6rem;
+      margin: 1rem 0 0;
+    }
+    .project-points li,
+    .experience-points li {
+      color: var(--muted);
+      font-size: 0.92rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .project-points li::before,
+    .experience-points li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 0.35rem;
+      height: 0.35rem;
+      border-radius: 50%;
+      background: var(--accent);
+    }
 
-  /* FOOTER */
-  footer{text-align:center;padding:2rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);}
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .timeline-year {
+      color: var(--faint);
+      font-size: 0.9rem;
+      padding-top: 0.2rem;
+    }
 
-  /* RESPONSIVE */
-  @media(max-width:700px){
-    .about-grid{grid-template-columns:1fr;}
-    .nav-links{display:none;}
-  }
+    .gallery-tabs {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .tab-btn {
+      padding: 0.48rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: background 180ms ease, color 180ms ease;
+    }
+    .tab-btn.active {
+      background: var(--accent);
+      border-color: transparent;
+      color: white;
+    }
+    .gallery-item {
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.25rem;
+    }
+    .gallery-item[data-hidden="true"] { display: none; }
+    .gallery-link {
+      align-self: start;
+      margin-top: 1.25rem;
+      color: var(--accent2);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
 
-  /* ANIMATIONS */
-  .fade-up{opacity:0;transform:translateY(30px);transition:.7s ease;}
-  .fade-up.visible{opacity:1;transform:translateY(0);}
-</style>
+    .contact-link {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .contact-link:last-child { border-bottom: 0; }
+    .contact-link strong { color: var(--text); }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--faint);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .about-grid,
+      .metrics-grid,
+      .research-grid,
+      .contact-grid,
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+      .hero { min-height: auto; padding-top: 8rem; }
+      section { padding: 4.5rem 1.25rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fade-up { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav>
-  <div class="logo">YourName</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-inner fade-up">
-    <div class="hero-badge">✦ Available for Work</div>
-    <h1>Hi, I'm <span>Your Name</span></h1>
-    <p>A passionate developer & creator building things that matter. Turning ideas into reality through code and creativity.</p>
-    <div class="hero-btns">
-      <a href="#projects" class="btn btn-primary">View My Work</a>
-      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+  <nav>
+    <div class="nav-inner">
+      <a class="logo" href="#home" aria-label="Ricardo Sanchez home">
+        <img src="./assets/Website_Icon_v1.png" alt="" width="38" height="38" />
+        <span>Ricardo Sanchez</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#gallery">Outputs</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
-  </div>
-</section>
+  </nav>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <div class="about-grid fade-up">
-      <div class="about-img-wrap">
-        <!-- Replace src with your photo path e.g. src="assets/photo.jpg" -->
-        <div class="about-img-placeholder">
-          <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-          <span>Add your photo here</span>
-          <span style="font-size:.75rem;opacity:.6;">Replace with &lt;img src="photo.jpg"&gt;</span>
+  <section class="hero" id="home">
+    <div class="hero-inner fade-up">
+      <div class="hero-badge">Neuroengineering Portfolio</div>
+      <h1>Ricardo <span>Sanchez</span></h1>
+      <p>
+        PhD researcher building translational neuroengineering tools for stimulation, targeting, and safety across peripheral nerve stimulation, electrochemical testing, and PS-OCT-guided devices.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">View Selected Projects</a>
+        <a href="./20260129_Resume.pdf" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Download Resume</a>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <p class="section-label">Current base</p>
+          <div class="value">UW-Madison · Ludwig Lab</div>
+        </div>
+        <div class="metric-card">
+          <p class="section-label">Primary focus</p>
+          <div class="value">PTNS, safety, targeting</div>
+        </div>
+        <div class="metric-card">
+          <p class="section-label">Patent project</p>
+          <div class="value">PS-OCT therapy probe</div>
+        </div>
+        <div class="metric-card">
+          <p class="section-label">Languages</p>
+          <div class="value">Spanish + English</div>
         </div>
       </div>
-      <div>
-        <p class="section-label">About Me</p>
-        <h2 class="section-title">Who I <span>Am</span></h2>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="about-grid fade-up">
+        <div>
+          <img
+            class="about-photo"
+            src="./assets/profile.jpg"
+            alt="Portrait of Ricardo Sanchez"
+            width="520"
+            height="520"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+        <div>
+          <p class="section-label">About Me</p>
+          <h2 class="section-title">Building tools for <span>translation</span></h2>
+          <div class="divider"></div>
+          <p class="section-intro">
+            I am a PhD student in Biomedical Engineering at the University of Wisconsin-Madison in the Ludwig Lab. My work centers on peripheral nerve stimulation, electrochemical safety, PS-OCT-guided probe systems, and workflows that connect benchtop engineering to translational neuromodulation studies.
+          </p>
+          <p class="section-intro">
+            I am especially interested in how device geometry, anatomy, imaging, and stimulation safety interact when a prototype moves toward real clinical use.
+          </p>
+          <div class="skills">
+            <span class="skill-tag">Peripheral nerve stimulation</span>
+            <span class="skill-tag">PTNS</span>
+            <span class="skill-tag">Electrochemistry</span>
+            <span class="skill-tag">PS-OCT</span>
+            <span class="skill-tag">Large-animal protocols</span>
+            <span class="skill-tag">Device translation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research" class="section-alt">
+    <div class="container">
+      <div class="fade-up">
+        <p class="section-label">Research Areas</p>
+        <h2 class="section-title">Capabilities tied to <span>execution</span></h2>
         <div class="divider"></div>
-        <p style="color:var(--muted);margin-bottom:1rem;">
-          Write a short bio about yourself here. What do you do, what are you passionate about, what have you studied or worked on? Keep it genuine and conversational.
+        <p class="section-intro">
+          Focused capability areas that connect experimental design, device prototyping, analysis, and translational decision-making.
         </p>
-        <p style="color:var(--muted);margin-bottom:1.5rem;">
-          Add a second paragraph about your background, goals, or what makes you unique as a candidate or collaborator.
-        </p>
-        <div class="skills">
-          <span class="skill-tag">JavaScript</span>
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">React</span>
-          <span class="skill-tag">Node.js</span>
-          <span class="skill-tag">Add Your Skills</span>
+      </div>
+
+      <div class="research-grid">
+        <article class="card fade-up">
+          <h3>Peripheral nerve stimulation and selectivity</h3>
+          <p>Designing experiments that separate on-target activation from off-target effects in tibial and peripheral nerve stimulation.</p>
+          <div class="tag-row">
+            <span class="project-tag">PTNS</span>
+            <span class="project-tag">Selectivity</span>
+            <span class="project-tag">OAB</span>
+          </div>
+        </article>
+        <article class="card fade-up">
+          <h3>Electrochemical safety and electrode behavior</h3>
+          <p>Evaluating charge injection, impedance, cyclic voltammetry, and voltage transients for safer neuromodulation hardware claims.</p>
+          <div class="tag-row">
+            <span class="project-tag">EIS / CV</span>
+            <span class="project-tag">Charge density</span>
+            <span class="project-tag">Safety limits</span>
+          </div>
+        </article>
+        <article class="card fade-up">
+          <h3>PS-OCT-guided device prototyping</h3>
+          <p>Building PS-OCT-compatible probe systems and imaging workflows to identify tissue-layer transitions near nerve interfaces.</p>
+          <div class="tag-row">
+            <span class="project-tag">PS-OCT</span>
+            <span class="project-tag">Probe fabrication</span>
+            <span class="project-tag">23-gauge probe</span>
+          </div>
+        </article>
+        <article class="card fade-up">
+          <h3>Translational device strategy</h3>
+          <p>Supporting the path from prototype to use context through protocol design, patent-linked device development, and regulatory framing.</p>
+          <div class="tag-row">
+            <span class="project-tag">Translation</span>
+            <span class="project-tag">IP</span>
+            <span class="project-tag">Device workflows</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="fade-up">
+        <p class="section-label">Selected Projects</p>
+        <h2 class="section-title">Featured <span>case studies</span></h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card fade-up">
+          <div class="project-topper">
+            <span class="section-label">Featured</span>
+            <span class="project-index">01</span>
+          </div>
+          <div class="project-body">
+            <div class="project-title">Large-Animal Tibial Nerve Stimulation: Mapping On-Target vs Off-Target Effects</div>
+            <p class="project-desc">A 10-subject porcine PTNS study designed to quantify how stimulation distance and placement affect selective tibial activation.</p>
+            <ul class="project-points">
+              <li>Lead experimentalist and protocol developer across Neuronoff, Case Western Reserve University, and Harvard/MGH.</li>
+              <li>Performed microdissections to map tibial anatomy and collected EMG and neural activation data.</li>
+              <li>Linked stimulation geometry to on-target recruitment, off-target effects, and device targeting strategies.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="project-tag">Large animal</span>
+              <span class="project-tag">PTNS</span>
+              <span class="project-tag">EMG / neural data</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card fade-up">
+          <div class="project-topper">
+            <span class="section-label">Patent</span>
+            <span class="project-index">02</span>
+          </div>
+          <div class="project-body">
+            <div class="project-title">PS-OCT-Guided Neurovascular Therapy Probe</div>
+            <p class="project-desc">Co-inventor on patent application 20260069758 for a PS-OCT-guided neurovascular therapy probe.</p>
+            <ul class="project-points">
+              <li>Named inventor on "Apparatus for Applying Therapy to a Neurovascular Bundle," published March 12, 2026.</li>
+              <li>Fabricated approximately 10 PS-OCT-compatible injectable probes and a motorized integration arm.</li>
+              <li>Collected ex vivo datasets with polarization-sensitive changes near the muscle-sciatic nerve interface.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="project-tag">Patent</span>
+              <span class="project-tag">PS-OCT</span>
+              <span class="project-tag">Probe fabrication</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card fade-up">
+          <div class="project-topper">
+            <span class="section-label">Safety</span>
+            <span class="project-index">03</span>
+          </div>
+          <div class="project-body">
+            <div class="project-title">Electrochemical Safety Standards for Neuromodulation</div>
+            <p class="project-desc">Testing how electrode size, material, and geometry affect impedance behavior, voltage transients, and charge-injection claims.</p>
+            <ul class="project-points">
+              <li>Performed impedance spectroscopy, cyclic voltammetry, and voltage transient testing.</li>
+              <li>Compared geometric versus electrochemical surface area effects.</li>
+              <li>Contributed to a 2023 NANS abstract on a porous injectable electrode.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="project-tag">EIS / CV</span>
+              <span class="project-tag">Injectrode</span>
+              <span class="project-tag">Safety</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card fade-up">
+          <div class="project-topper">
+            <span class="section-label">Analysis</span>
+            <span class="project-index">04</span>
+          </div>
+          <div class="project-body">
+            <div class="project-title">Modeling and Image-Informed Device Interpretation</div>
+            <p class="project-desc">Analysis pipelines combining microCT, histology, and image-derived structure to inform electrode placement and stimulation geometry.</p>
+            <ul class="project-points">
+              <li>Integrated imaging-derived geometry with computational reasoning.</li>
+              <li>Connected benchtop design questions with stimulation field assumptions.</li>
+              <li>Developed supporting infrastructure where anatomy, imaging, and device constraints meet.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="project-tag">microCT</span>
+              <span class="project-tag">Modeling</span>
+              <span class="project-tag">Device interpretation</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card fade-up">
+          <div class="project-topper">
+            <span class="section-label">Competition</span>
+            <span class="project-index">05</span>
+          </div>
+          <div class="project-body">
+            <div class="project-title">BR41N.IO Brain-Computer Interface Hackathon</div>
+            <p class="project-desc">Team-based BCI data analysis project completed with Lobes of Confusion at the BR41N.IO Brain-Computer Interface Designer's Hackathon.</p>
+            <ul class="project-points">
+              <li>Placed 3rd overall in the BCI Data Analysis Projects division.</li>
+              <li>Worked on a stroke rehabilitation data analysis challenge under hackathon constraints.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="project-tag">BCI</span>
+              <span class="project-tag">Data analysis</span>
+              <span class="project-tag">Hackathon</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section-alt">
+    <div class="container">
+      <div class="fade-up">
+        <p class="section-label">Experience</p>
+        <h2 class="section-title">Research, teaching, and <span>translation</span></h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="timeline fade-up">
+        <div class="timeline-item">
+          <div class="timeline-year">Jun 2022-Present</div>
+          <div class="card">
+            <h3>Graduate Researcher · University of Wisconsin-Madison, Ludwig Lab</h3>
+            <p>PhD researcher under Dr. Kip Ludwig working across peripheral nerve stimulation, electrochemical safety, PS-OCT-guided probe development, and translational neuromodulation studies.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">Spring 2026</div>
+          <div class="card">
+            <h3>Teaching Assistant · BME 640 - Medical Devices Ecosystem: The Path to Product</h3>
+            <p>Guided project teams through gap and market analysis, reimbursement strategy, regulatory pathways, manufacturing, risk portfolios, and pitch development.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">Apr 2026</div>
+          <div class="card">
+            <h3>BR41N.IO Brain-Computer Interface Designer's Hackathon</h3>
+            <p>Earned 3rd place overall in the BCI Data Analysis Projects division with Lobes of Confusion.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">Jan 2022-Jun 2022</div>
+          <div class="card">
+            <h3>Mechanical Engineering Capstone · Boston Scientific</h3>
+            <p>Led a manufacturing process redesign for the RELIANCE 4-FRONT lead, reducing dead time by 50% and lowering projected annual cost by about $422,328.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">Education</div>
+          <div class="card">
+            <h3>University of Wisconsin-Madison · University of Puerto Rico Mayaguez</h3>
+            <p>PhD in Biomedical Engineering expected June 2027; MA in Biomedical Engineering completed August 2024; BS in Mechanical Engineering completed December 2023, Cum Laude.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PROJECTS -->
-<section id="projects" style="background:var(--bg2);">
-  <div class="container">
-    <div class="fade-up">
-      <p class="section-label">My Work</p>
-      <h2 class="section-title">Featured <span>Projects</span></h2>
-      <div class="divider"></div>
-    </div>
-    <div class="projects-grid">
-
-      <!-- PROJECT CARD 1 -->
-      <div class="project-card fade-up">
-        <!-- Replace with: <img class="project-img" src="assets/project1.jpg" alt="Project 1"> -->
-        <div class="project-img-placeholder">📁 Add project screenshot</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">React</span>
-            <span class="project-tag">Node.js</span>
-          </div>
-          <div class="project-title">Project Title One</div>
-          <p class="project-desc">Describe what this project does, the problem it solves, and what you built. Keep it concise but informative.</p>
-          <div class="project-links">
-            <a href="https://github.com/yourusername/project" target="_blank">GitHub</a>
-            <a href="#" target="_blank">Live Demo</a>
-          </div>
+  <section id="gallery">
+    <div class="container">
+      <div class="fade-up">
+        <p class="section-label">Outputs</p>
+        <h2 class="section-title">Documents & <span>presentations</span></h2>
+        <div class="divider"></div>
+        <div class="gallery-tabs">
+          <button class="tab-btn active" type="button" onclick="filterGallery('all', this)">All</button>
+          <button class="tab-btn" type="button" onclick="filterGallery('publication', this)">Publications</button>
+          <button class="tab-btn" type="button" onclick="filterGallery('presentation', this)">Presentations</button>
+          <button class="tab-btn" type="button" onclick="filterGallery('document', this)">Documents</button>
         </div>
       </div>
 
-      <!-- PROJECT CARD 2 -->
-      <div class="project-card fade-up">
-        <div class="project-img-placeholder">📁 Add project screenshot</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">ML</span>
+      <div class="gallery-grid fade-up">
+        <article class="gallery-item" data-type="publication">
+          <div>
+            <p class="section-label">Patent</p>
+            <h3>Apparatus for Applying Therapy to a Neurovascular Bundle</h3>
+            <p>Patent application 20260069758, filed September 9, 2024 and published March 12, 2026.</p>
           </div>
-          <div class="project-title">Project Title Two</div>
-          <p class="project-desc">Describe what this project does, the problem it solves, and what you built. Keep it concise but informative.</p>
-          <div class="project-links">
-            <a href="https://github.com/yourusername/project" target="_blank">GitHub</a>
-            <a href="#" target="_blank">Live Demo</a>
+        </article>
+        <article class="gallery-item" data-type="publication">
+          <div>
+            <p class="section-label">Abstract</p>
+            <h3>Mechanisms of Increased Charge Injection Capacity of a Porous Injectable Electrode</h3>
+            <p>2023 NANS abstract focused on EIS, CV, voltage transient analysis, and porous-electrode behavior.</p>
           </div>
-        </div>
-      </div>
-
-      <!-- PROJECT CARD 3 -->
-      <div class="project-card fade-up">
-        <div class="project-img-placeholder">📁 Add project screenshot</div>
-        <div class="project-body">
-          <div class="project-tags">
-            <span class="project-tag">HTML/CSS</span>
-            <span class="project-tag">JS</span>
+          <a class="gallery-link" href="./assets/2023%20NANS%20Abstract%20-%20Electrochemistry%20neurostimulator_JKTedits.docx" target="_blank" rel="noopener noreferrer">Open DOCX</a>
+        </article>
+        <article class="gallery-item" data-type="presentation">
+          <div>
+            <p class="section-label">Talk</p>
+            <h3>Minimally Invasive Nerve Layer Identification Using PS-OCT for Optimized Electrode Placement in PTNS</h3>
+            <p>Neurosurgery Day presentation describing a 23-gauge PS-OCT needle probe and porcine validation workflow.</p>
           </div>
-          <div class="project-title">Project Title Three</div>
-          <p class="project-desc">Describe what this project does, the problem it solves, and what you built. Keep it concise but informative.</p>
-          <div class="project-links">
-            <a href="https://github.com/yourusername/project" target="_blank">GitHub</a>
-            <a href="#" target="_blank">Live Demo</a>
+          <a class="gallery-link" href="./assets/2024_10_11_NeurosurgeryDay.pptx" target="_blank" rel="noopener noreferrer">Open PPTX</a>
+        </article>
+        <article class="gallery-item" data-type="document">
+          <div>
+            <p class="section-label">Commercialization</p>
+            <h3>AccuGyd Phase 2 Commercialization Plan</h3>
+            <p>Device commercialization plan covering a translational path, market-facing strategy, and product-development considerations.</p>
           </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery" class="gallery-section">
-  <div class="container">
-    <div class="fade-up">
-      <p class="section-label">Media</p>
-      <h2 class="section-title">Photos & <span>Videos</span></h2>
-      <div class="divider"></div>
-      <div class="gallery-tabs">
-        <button class="tab-btn active" onclick="filterGallery('all', this)">All</button>
-        <button class="tab-btn" onclick="filterGallery('photo', this)">Photos</button>
-        <button class="tab-btn" onclick="filterGallery('video', this)">Videos</button>
+          <a class="gallery-link" href="./assets/AccuGyd%20phase%202%20commercialization%20plan_1071210933.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+        </article>
+        <article class="gallery-item" data-type="document">
+          <div>
+            <p class="section-label">Hackathon</p>
+            <h3>BR41N.IO BCI Hackathon Result</h3>
+            <p>Public post documenting a 3rd place result in the BCI Data Analysis Projects division.</p>
+          </div>
+          <a class="gallery-link" href="./assets/Hackathon%20Post.txt" target="_blank" rel="noopener noreferrer">Open TXT</a>
+        </article>
+        <article class="gallery-item" data-type="document">
+          <div>
+            <p class="section-label">Resume</p>
+            <h3>Resume PDF</h3>
+            <p>One-page resume with education, project details, technical skills, and contact information.</p>
+          </div>
+          <a class="gallery-link" href="./20260129_Resume.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+        </article>
       </div>
     </div>
-    <div class="gallery-grid fade-up">
+  </section>
 
-      <!-- PHOTO ITEMS — replace with: <img src="assets/photo.jpg" alt="desc"> -->
-      <div class="gallery-item" data-type="photo" onclick="openLightbox('assets/photo1.jpg')">
-        <div class="gallery-placeholder">
-          🖼️<br>Add photo<br><span style="font-size:.7rem;opacity:.6;">src="assets/photo1.jpg"</span>
-        </div>
-        <div class="gallery-overlay"><span style="color:#fff;font-size:1.5rem;">🔍</span></div>
+  <section id="contact" class="section-alt">
+    <div class="container">
+      <div class="fade-up">
+        <p class="section-label">Contact</p>
+        <h2 class="section-title">Let's <span>connect</span></h2>
+        <div class="divider"></div>
+        <p class="section-intro">Clear contact paths for academic, clinical, and industry conversations.</p>
       </div>
 
-      <div class="gallery-item" data-type="photo" onclick="openLightbox('assets/photo2.jpg')">
-        <div class="gallery-placeholder">
-          🖼️<br>Add photo<br><span style="font-size:.7rem;opacity:.6;">src="assets/photo2.jpg"</span>
+      <div class="contact-grid fade-up">
+        <div class="card">
+          <h3>Direct contact</h3>
+          <a class="contact-link" href="mailto:rsanchez24@wisc.edu"><strong>Email</strong><span>rsanchez24@wisc.edu</span></a>
+          <a class="contact-link" href="https://github.com/ricardo-sanchez-0" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong><span>ricardo-sanchez-0</span></a>
+          <div class="contact-link"><strong>Phone</strong><span>787-590-9594</span></div>
+          <div class="contact-link"><strong>Location</strong><span>Madison, WI</span></div>
         </div>
-        <div class="gallery-overlay"><span style="color:#fff;font-size:1.5rem;">🔍</span></div>
-      </div>
-
-      <!-- VIDEO ITEM — embed YouTube or Vimeo -->
-      <div class="gallery-item" data-type="video" style="cursor:default;">
-        <div class="gallery-placeholder">
-          🎬<br>Embed video<br>
-          <span style="font-size:.7rem;opacity:.6;margin-top:.25rem;">
-            Replace with YouTube iframe:<br>
-            &lt;iframe src="https://www.youtube.com/embed/VIDEO_ID"&gt;&lt;/iframe&gt;
-          </span>
+        <div class="card">
+          <h3>Current emphasis</h3>
+          <p>Peripheral nerve stimulation, electrochemical safety, PS-OCT-guided probe systems, image-guided devices, nerve modeling, and translational studies for bladder neuromodulation.</p>
+          <div class="hero-btns" style="justify-content:flex-start;margin-top:1.25rem;">
+            <a class="btn btn-primary" href="mailto:rsanchez24@wisc.edu">Email Ricardo</a>
+            <a class="btn btn-outline" href="./20260129_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+          </div>
         </div>
-      </div>
-
-      <div class="gallery-item" data-type="photo" onclick="openLightbox('assets/photo3.jpg')">
-        <div class="gallery-placeholder">
-          🖼️<br>Add photo<br><span style="font-size:.7rem;opacity:.6;">src="assets/photo3.jpg"</span>
-        </div>
-        <div class="gallery-overlay"><span style="color:#fff;font-size:1.5rem;">🔍</span></div>
-      </div>
-
-      <div class="gallery-item" data-type="video" style="cursor:default;">
-        <div class="gallery-placeholder">
-          🎬<br>Embed video<br>
-          <span style="font-size:.7rem;opacity:.6;margin-top:.25rem;">
-            &lt;iframe src="https://www.youtube.com/embed/VIDEO_ID"&gt;&lt;/iframe&gt;
-          </span>
-        </div>
-      </div>
-
-      <div class="gallery-item" data-type="photo" onclick="openLightbox('assets/photo4.jpg')">
-        <div class="gallery-placeholder">
-          🖼️<br>Add photo<br><span style="font-size:.7rem;opacity:.6;">src="assets/photo4.jpg"</span>
-        </div>
-        <div class="gallery-overlay"><span style="color:#fff;font-size:1.5rem;">🔍</span></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-    <div class="contact-inner fade-up">
-      <p class="section-label">Contact</p>
-      <h2 class="section-title">Let's <span>Connect</span></h2>
-      <div class="divider" style="margin:0 auto 1.5rem;"></div>
-      <p>I'm always open to new opportunities, collaborations, or just a good conversation. Reach out through any of the links below.</p>
-      <div class="contact-links">
-        <a class="contact-link" href="mailto:your@email.com">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-          your@email.com
-        </a>
-        <a class="contact-link" href="https://github.com/yourusername" target="_blank">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          GitHub
-        </a>
-        <a class="contact-link" href="https://linkedin.com/in/yourusername" target="_blank">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-          LinkedIn
-        </a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <p>Built by <strong>Your Name</strong> · Hosted on GitHub Pages</p>
-</footer>
+  <footer>
+    <p>Built as a static HTML/CSS/JS portfolio for GitHub Pages.</p>
+  </footer>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-  <div class="lightbox-content" onclick="event.stopPropagation()">
-    <img id="lightbox-img" src="" alt=""/>
-  </div>
-</div>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.1 });
 
-<script>
-  // Scroll animations
-  const obs = new IntersectionObserver(els => {
-    els.forEach(el => { if(el.isIntersecting) el.target.classList.add('visible'); });
-  }, {threshold:.1});
-  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+    document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
 
-  // Gallery filter
-  function filterGallery(type, btn) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.gallery-item').forEach(item => {
-      item.style.display = (type === 'all' || item.dataset.type === type) ? '' : 'none';
-    });
-  }
+    function filterGallery(type, btn) {
+      document.querySelectorAll(".tab-btn").forEach((button) => button.classList.remove("active"));
+      btn.classList.add("active");
 
-  // Lightbox
-  function openLightbox(src) {
-    document.getElementById('lightbox-img').src = src;
-    document.getElementById('lightbox').classList.add('open');
-  }
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-  }
-  document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
-</script>
+      document.querySelectorAll(".gallery-item").forEach((item) => {
+        const shouldShow = type === "all" || item.dataset.type === type;
+        item.dataset.hidden = shouldShow ? "false" : "true";
+      });
+    }
+  </script>
 </body>
 </html>
