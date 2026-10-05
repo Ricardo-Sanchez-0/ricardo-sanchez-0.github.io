@@ -16,434 +16,11 @@
     href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   />
-  <style>
-    :root {
-      --bg: #0f1116;
-      --bg2: #151922;
-      --bg3: #191f2a;
-      --card: #1e2531;
-      --accent: #4f98a3;
-      --accent2: #9ed0d8;
-      --accent-soft: rgba(79, 152, 163, 0.14);
-      --text: #f2f4f8;
-      --muted: #a1aab8;
-      --faint: #697180;
-      --border: rgba(255, 255, 255, 0.09);
-      --shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
-      --radius: 8px;
-      --font-display: "Instrument Serif", Georgia, serif;
-      --font-body: "Inter", system-ui, sans-serif;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: radial-gradient(circle at top right, rgba(79, 152, 163, 0.12), transparent 28%), var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      line-height: 1.65;
-    }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      background: rgba(15, 17, 22, 0.86);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-      padding: 0.85rem 2rem;
-    }
-    .nav-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 0.02em;
-    }
-    .logo img {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      object-fit: cover;
-      background: #fff;
-      border: 1px solid var(--border);
-    }
-    .nav-links {
-      display: flex;
-      gap: 1.4rem;
-      list-style: none;
-      align-items: center;
-    }
-    .nav-links a {
-      color: var(--muted);
-      font-size: 0.9rem;
-      transition: color 180ms ease;
-    }
-    .nav-links a:hover { color: var(--accent2); }
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 8rem 2rem 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 620px;
-      height: 620px;
-      background: radial-gradient(circle, rgba(79, 152, 163, 0.18), transparent 70%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-    }
-    .hero-inner {
-      max-width: 900px;
-      position: relative;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 1rem;
-      border: 1px solid rgba(79, 152, 163, 0.28);
-      border-radius: 999px;
-      color: var(--accent2);
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      background: var(--accent-soft);
-    }
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(3.4rem, 8vw, 6.8rem);
-      font-weight: 400;
-      line-height: 0.95;
-      margin-bottom: 1.25rem;
-    }
-    .hero h1 span { color: var(--accent2); }
-    .hero p {
-      color: var(--muted);
-      font-size: clamp(1rem, 1.8vw, 1.25rem);
-      max-width: 760px;
-      margin: 0 auto 2rem;
-    }
-    .hero-btns {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 0.8rem 1.25rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      font-weight: 700;
-      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
-    }
-    .btn-primary {
-      background: var(--accent);
-      border-color: transparent;
-      color: white;
-    }
-    .btn-primary:hover {
-      background: #6aaebb;
-      transform: translateY(-2px);
-    }
-    .btn-outline {
-      color: var(--text);
-      background: transparent;
-    }
-    .btn-outline:hover {
-      border-color: var(--accent2);
-      color: var(--accent2);
-      transform: translateY(-2px);
-    }
-
-    section { padding: 6rem 2rem; }
-    .section-alt { background: var(--bg2); }
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-    }
-    .section-label {
-      font-size: 0.78rem;
-      letter-spacing: 0.15em;
-      color: var(--accent2);
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      font-weight: 400;
-      line-height: 1;
-      margin-bottom: 1rem;
-    }
-    .section-title span { color: var(--accent2); }
-    .section-intro {
-      color: var(--muted);
-      max-width: 760px;
-      margin-bottom: 2.5rem;
-    }
-    .divider {
-      width: 64px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      border-radius: 999px;
-      margin-bottom: 2rem;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(240px, 0.72fr) 1.28fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .about-photo {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      background: var(--bg3);
-    }
-    .skills, .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 1.5rem;
-    }
-    .skill-tag, .project-tag {
-      display: inline-flex;
-      padding: 0.42rem 0.72rem;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      color: var(--accent2);
-      background: var(--accent-soft);
-      border: 1px solid rgba(79, 152, 163, 0.2);
-    }
-
-    .metrics-grid,
-    .research-grid,
-    .projects-grid,
-    .gallery-grid,
-    .contact-grid {
-      display: grid;
-      gap: 1.25rem;
-    }
-    .metrics-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 2rem; }
-    .research-grid, .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .projects-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-    .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-
-    .card,
-    .project-card,
-    .gallery-item,
-    .metric-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent), var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
-    }
-    .card, .metric-card { padding: 1.35rem; }
-    .metric-card .value {
-      margin-top: 0.35rem;
-      font-size: 1.05rem;
-      font-weight: 800;
-    }
-    .card h3,
-    .project-title,
-    .gallery-item h3 {
-      font-size: 1.08rem;
-      line-height: 1.25;
-      margin-bottom: 0.75rem;
-    }
-    .card p,
-    .project-desc,
-    .gallery-item p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .project-card {
-      overflow: hidden;
-      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-    }
-    .project-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(158, 208, 216, 0.5);
-      box-shadow: 0 20px 46px rgba(79, 152, 163, 0.14);
-    }
-    .project-topper {
-      height: 118px;
-      padding: 1rem;
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      background:
-        linear-gradient(135deg, rgba(79, 152, 163, 0.3), rgba(79, 152, 163, 0.04)),
-        var(--bg3);
-      border-bottom: 1px solid var(--border);
-    }
-    .project-index {
-      font-family: var(--font-display);
-      font-size: 3rem;
-      color: var(--accent2);
-      line-height: 0.85;
-    }
-    .project-body { padding: 1.35rem; }
-    .project-points,
-    .experience-points {
-      list-style: none;
-      display: grid;
-      gap: 0.6rem;
-      margin: 1rem 0 0;
-    }
-    .project-points li,
-    .experience-points li {
-      color: var(--muted);
-      font-size: 0.92rem;
-      padding-left: 1rem;
-      position: relative;
-    }
-    .project-points li::before,
-    .experience-points li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.72em;
-      width: 0.35rem;
-      height: 0.35rem;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    .timeline {
-      display: grid;
-      gap: 1rem;
-    }
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 150px minmax(0, 1fr);
-      gap: 1.25rem;
-      align-items: start;
-      padding: 1.25rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .timeline-year {
-      color: var(--faint);
-      font-size: 0.9rem;
-      padding-top: 0.2rem;
-    }
-
-    .gallery-tabs {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin-bottom: 1.5rem;
-    }
-    .tab-btn {
-      padding: 0.48rem 1rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--muted);
-      cursor: pointer;
-      transition: background 180ms ease, color 180ms ease;
-    }
-    .tab-btn.active {
-      background: var(--accent);
-      border-color: transparent;
-      color: white;
-    }
-    .gallery-item {
-      min-height: 230px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 1.25rem;
-    }
-    .gallery-item[data-hidden="true"] { display: none; }
-    .gallery-link {
-      align-self: start;
-      margin-top: 1.25rem;
-      color: var(--accent2);
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-
-    .contact-link {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 0.9rem 0;
-      color: var(--muted);
-      border-bottom: 1px solid var(--border);
-    }
-    .contact-link:last-child { border-bottom: 0; }
-    .contact-link strong { color: var(--text); }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: var(--faint);
-      font-size: 0.85rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .fade-up {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 700ms ease, transform 700ms ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 860px) {
-      .nav-links { display: none; }
-      .about-grid,
-      .metrics-grid,
-      .research-grid,
-      .contact-grid,
-      .timeline-item {
-        grid-template-columns: 1fr;
-      }
-      .hero { min-height: auto; padding-top: 8rem; }
-      section { padding: 4.5rem 1.25rem; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .fade-up { opacity: 1; transform: none; transition: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="./assets/site.css" />
 </head>
 <body>
-  <nav>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <nav aria-label="Main navigation">
     <div class="nav-inner">
       <a class="logo" href="#home" aria-label="Ricardo Sanchez home">
         <img src="./assets/Website_Icon_v1.png" alt="" width="38" height="38" />
@@ -460,6 +37,7 @@
     </div>
   </nav>
 
+  <main id="main-content">
   <section class="hero" id="home">
     <div class="hero-inner fade-up">
       <div class="hero-badge">Neuroengineering Portfolio</div>
@@ -469,7 +47,7 @@
       </p>
       <div class="hero-btns">
         <a href="#projects" class="btn btn-primary">View Selected Projects</a>
-        <a href="./20260610_Resume.pdf" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Download Resume</a>
+        <a href="./20260824_RicardoResume.pdf" class="btn btn-outline" target="_blank" rel="noopener noreferrer" download>Download Resume (PDF)</a>
       </div>
 
       <div class="metrics-grid">
@@ -597,8 +175,8 @@
             <span class="project-index">01</span>
           </div>
           <div class="project-body">
-            <div class="project-title">Large-Animal Tibial Nerve Stimulation: Mapping On-Target vs Off-Target Effects</div>
-            <p class="project-desc">A 10-subject porcine PTNS study designed to quantify how stimulation distance and placement affect selective tibial activation.</p>
+            <h3 class="project-title"><a href="./projects/tibial-nerve-stimulation.html">Large-Animal Tibial Nerve Stimulation: Mapping On-Target vs Off-Target Effects</a></h3>
+            <p class="project-desc">An 11-experiment porcine PTNS study designed to quantify how stimulation distance and placement affect selective tibial activation.</p>
             <ul class="project-points">
               <li>Lead experimentalist and protocol developer across Neuronoff, Case Western Reserve University, and Harvard/MGH.</li>
               <li>Performed microdissections to map tibial anatomy and collected EMG and neural activation data.</li>
@@ -609,6 +187,8 @@
               <span class="project-tag">PTNS</span>
               <span class="project-tag">EMG / neural data</span>
             </div>
+            <div class="resource-links"><a class="resource-link" href="./projects/tibial-nerve-stimulation.html#resources">Related BAT publications</a></div>
+          <div class="project-action"><a class="btn btn-outline" href="./projects/tibial-nerve-stimulation.html" aria-label="View project: Large-Animal Tibial Nerve Stimulation: Mapping On-Target vs Off-Target Effects">View project details</a></div>
           </div>
         </article>
 
@@ -618,7 +198,7 @@
             <span class="project-index">02</span>
           </div>
           <div class="project-body">
-            <div class="project-title">PS-OCT-Guided Neurovascular Therapy Probe</div>
+            <h3 class="project-title"><a href="./projects/ps-oct-probe.html">PS-OCT-Guided Neurovascular Therapy Probe</a></h3>
             <p class="project-desc">Co-inventor on patent application 20260069758 for a PS-OCT-guided neurovascular therapy probe.</p>
             <ul class="project-points">
               <li>Named inventor on "Apparatus for Applying Therapy to a Neurovascular Bundle," published March 12, 2026.</li>
@@ -630,6 +210,10 @@
               <span class="project-tag">PS-OCT</span>
               <span class="project-tag">Probe fabrication</span>
             </div>
+            <div class="resource-links">
+              <a class="resource-link" href="https://patents.google.com/patent/US20260069758A1/en" target="_blank" rel="noopener noreferrer">View patent</a>
+            </div>
+          <div class="project-action"><a class="btn btn-outline" href="./projects/ps-oct-probe.html" aria-label="View project: PS-OCT-Guided Neurovascular Therapy Probe">View project details</a></div>
           </div>
         </article>
 
@@ -639,7 +223,7 @@
             <span class="project-index">03</span>
           </div>
           <div class="project-body">
-            <div class="project-title">Electrochemical Safety Standards for Neuromodulation</div>
+            <h3 class="project-title"><a href="./projects/electrochemical-safety.html">Electrochemical Safety Standards for Neuromodulation</a></h3>
             <p class="project-desc">Testing how electrode size, material, and geometry affect impedance behavior, voltage transients, and charge-injection claims.</p>
             <ul class="project-points">
               <li>Performed impedance spectroscopy, cyclic voltammetry, and voltage transient testing.</li>
@@ -651,6 +235,10 @@
               <span class="project-tag">Injectrode</span>
               <span class="project-tag">Safety</span>
             </div>
+            <div class="resource-links">
+              <a class="resource-link" href="./assets/DC%20Offsets%20Biorxiv.pdf" download>Download DC offsets PDF</a>
+            </div>
+          <div class="project-action"><a class="btn btn-outline" href="./projects/electrochemical-safety.html" aria-label="View project: Electrochemical Safety Standards for Neuromodulation">View project details</a></div>
           </div>
         </article>
 
@@ -660,7 +248,7 @@
             <span class="project-index">04</span>
           </div>
           <div class="project-body">
-            <div class="project-title">Modeling and Image-Informed Device Interpretation</div>
+            <h3 class="project-title"><a href="./projects/modeling-and-imaging.html">Modeling and Image-Informed Device Interpretation</a></h3>
             <p class="project-desc">Analysis pipelines combining microCT, histology, and image-derived structure to inform electrode placement and stimulation geometry.</p>
             <ul class="project-points">
               <li>Integrated imaging-derived geometry with computational reasoning.</li>
@@ -672,6 +260,7 @@
               <span class="project-tag">Modeling</span>
               <span class="project-tag">Device interpretation</span>
             </div>
+          <div class="project-action"><a class="btn btn-outline" href="./projects/modeling-and-imaging.html" aria-label="View project: Modeling and Image-Informed Device Interpretation">View project details</a></div>
           </div>
         </article>
 
@@ -681,7 +270,7 @@
             <span class="project-index">05</span>
           </div>
           <div class="project-body">
-            <div class="project-title">BR41N.IO Brain-Computer Interface Hackathon</div>
+            <h3 class="project-title"><a href="./projects/bci-hackathon.html">BR41N.IO Brain-Computer Interface Hackathon</a></h3>
             <p class="project-desc">Team-based BCI data analysis project completed with Lobes of Confusion at the BR41N.IO Brain-Computer Interface Designer's Hackathon.</p>
             <ul class="project-points">
               <li>Placed 3rd overall in the BCI Data Analysis Projects division.</li>
@@ -692,6 +281,23 @@
               <span class="project-tag">Data analysis</span>
               <span class="project-tag">Hackathon</span>
             </div>
+            <div class="resource-links">
+              <a class="resource-link" href="./assets/3rd-place-winner-2026-data-analysis-certificate%20%281%29.pdf" target="_blank" rel="noopener noreferrer">View third-place certificate</a>
+              <a class="resource-link" href="./projects/bci-hackathon.html#presentation">Watch team presentation</a>
+
+              <a class="resource-link" href="https://www.linkedin.com/posts/ricardo-s%C3%A1nchez-085571274_im-incredibly-proud-of-my-team-nicholas-ugcPost-7454571436125593600-5vjt/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEMAuiUBiPTCmjpEis2veD8OGaMMKOL1H88" target="_blank" rel="noopener noreferrer">View LinkedIn post</a>
+            </div>
+          <div class="project-action"><a class="btn btn-outline" href="./projects/bci-hackathon.html" aria-label="View project: BR41N.IO Brain-Computer Interface Hackathon">View project details</a></div>
+          </div>
+        </article>
+        <article class="project-card fade-up">
+          <div class="project-topper"><span class="section-label">Manufacturing</span><span class="project-index">06</span></div>
+          <div class="project-body">
+            <h3 class="project-title"><a href="./projects/manufacturing-capstone.html">RELIANCE 4-FRONT Lead Manufacturing Process Redesign</a></h3>
+            <p class="project-desc">Boston Scientific-sponsored capstone designing a motorized cutting fixture and in-line fault detection for a medical device manufacturing process.</p>
+            <ul class="project-points"><li>Validated approximately 50% less line dead time and an estimated $422,328 in annual cost savings.</li></ul>
+            <div class="tag-row"><span class="project-tag">Manufacturing</span><span class="project-tag">V&amp;V</span><span class="project-tag">Test fixtures</span></div>
+            <div class="project-action"><a class="btn btn-outline" href="./projects/manufacturing-capstone.html" aria-label="View project: RELIANCE 4-FRONT Lead Manufacturing Process Redesign">View project details</a></div>
           </div>
         </article>
       </div>
@@ -719,6 +325,7 @@
           <div class="card">
             <h3>Teaching Assistant · BME 640 - Medical Devices Ecosystem: The Path to Product</h3>
             <p>Guided project teams through gap and market analysis, reimbursement strategy, regulatory pathways, manufacturing, risk portfolios, and pitch development.</p>
+            <div class="resource-links"><a class="resource-link" href="./assets/AccuGyd%20phase%202%20commercialization%20plan_1071210933.pdf" target="_blank" rel="noopener noreferrer">View AccuGyd commercialization reference (PDF)</a></div>
           </div>
         </div>
         <div class="timeline-item">
@@ -733,13 +340,14 @@
           <div class="card">
             <h3>Mechanical Engineering Capstone · Boston Scientific</h3>
             <p>Led a manufacturing process redesign for the RELIANCE 4-FRONT lead, reducing dead time by 50% and lowering projected annual cost by about $422,328.</p>
+            <div class="resource-links"><a class="resource-link" href="./projects/manufacturing-capstone.html">View manufacturing capstone</a></div>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-year">Education</div>
           <div class="card">
             <h3>University of Wisconsin-Madison · University of Puerto Rico Mayaguez</h3>
-            <p>PhD in Biomedical Engineering expected June 2027; MA in Biomedical Engineering completed August 2024; BS in Mechanical Engineering completed December 2023, Cum Laude.</p>
+            <p>PhD in Biomedical Engineering expected December 2027; MS in Biomedical Engineering completed August 2024; BS in Mechanical Engineering completed December 2023, Cum Laude.</p>
           </div>
         </div>
       </div>
@@ -752,11 +360,11 @@
         <p class="section-label">Outputs</p>
         <h2 class="section-title">Documents & <span>presentations</span></h2>
         <div class="divider"></div>
-        <div class="gallery-tabs">
-          <button class="tab-btn active" type="button" onclick="filterGallery('all', this)">All</button>
-          <button class="tab-btn" type="button" onclick="filterGallery('publication', this)">Publications</button>
-          <button class="tab-btn" type="button" onclick="filterGallery('presentation', this)">Presentations</button>
-          <button class="tab-btn" type="button" onclick="filterGallery('document', this)">Documents</button>
+        <div class="gallery-tabs" role="group" aria-label="Filter outputs">
+          <button class="tab-btn active" type="button" aria-pressed="true" onclick="filterGallery('all', this)">All</button>
+          <button class="tab-btn" type="button" aria-pressed="false" onclick="filterGallery('publication', this)">Publications</button>
+          <button class="tab-btn" type="button" aria-pressed="false" onclick="filterGallery('presentation', this)">Presentations</button>
+          <button class="tab-btn" type="button" aria-pressed="false" onclick="filterGallery('document', this)">Documents</button>
         </div>
       </div>
 
@@ -767,14 +375,46 @@
             <h3>Apparatus for Applying Therapy to a Neurovascular Bundle</h3>
             <p>Patent application 20260069758, filed September 9, 2024 and published March 12, 2026.</p>
           </div>
+          <a class="gallery-link" href="https://patents.google.com/patent/US20260069758A1/en" target="_blank" rel="noopener noreferrer">View Patent</a>
+        <a class="gallery-link" href="./projects/ps-oct-probe.html">Explore PS-OCT probe project</a>
         </article>
         <article class="gallery-item" data-type="publication">
           <div>
             <p class="section-label">Abstract</p>
             <h3>Mechanisms of Increased Charge Injection Capacity of a Porous Injectable Electrode</h3>
-            <p>2023 NANS abstract focused on EIS, CV, voltage transient analysis, and porous-electrode behavior.</p>
+            <p>2023 NANS abstract submission draft focused on EIS, CV, voltage transient analysis, and porous-electrode behavior.</p>
           </div>
-          <a class="gallery-link" href="./assets/2023%20NANS%20Abstract%20-%20Electrochemistry%20neurostimulator_JKTedits.docx" target="_blank" rel="noopener noreferrer">Open DOCX</a>
+        <a class="gallery-link" href="./assets/2023%20NANS%20Abstract%20-%20Electrochemistry%20neurostimulator_JKTedits.docx" download>Download NANS abstract draft (DOCX)</a>
+          <a class="gallery-link" href="./projects/electrochemical-safety.html">Explore electrochemical safety project</a>
+        </article>
+        <article class="gallery-item" data-type="publication">
+          <div>
+            <p class="section-label">Publication</p>
+            <h3>Identification of Low Threshold Off-Target Activation Pathways During Stimulation of Carotid Baroreceptor Afferents in Swine</h3>
+            <p>Deshmukh et al., Journal of Neural Engineering 23 (2026) 036022. Related carotid baroreflex stimulation research; Ricardo Sanchez is a co-author.</p>
+          </div>
+          <a class="gallery-link" href="./assets/Deshmukh_2026_J._Neural_Eng._23_036022.pdf" download>Download BAT journal article (PDF)</a>
+        <a class="gallery-link" href="https://doi.org/10.1088/1741-2552/ae6979" target="_blank" rel="noopener noreferrer">Read journal article online</a>
+          <a class="gallery-link" href="./projects/tibial-nerve-stimulation.html">Explore related nerve selectivity research</a>
+        </article>
+        <article class="gallery-item" data-type="publication">
+          <div>
+            <p class="section-label">Conference abstract</p>
+            <h3>Identifying Off-Target Activation Pathways for Baroreflex Activation Therapy in Swine</h3>
+            <p>Large-animal activation-pathway work tied to off-target recruitment and stimulation selectivity.</p>
+          </div>
+          <a class="gallery-link" href="./assets/323236%20IDentifying%20Off-Target%20Activation%20Pathways%20for%20Baroreflex%20Activation%20Therapy%20%28BAT%29%20in%20Swine.pdf" download>Download BAT conference abstract (PDF)</a>
+        <a class="gallery-link" href="./projects/tibial-nerve-stimulation.html">Explore related nerve selectivity research</a>
+        </article>
+        <article class="gallery-item" data-type="publication">
+          <div>
+            <p class="section-label">Preprint</p>
+            <h3>Systematic Errors in DC Offset Measurement and Mitigation at Neurostimulation Electrodes</h3>
+            <p>Gholston, Sanchez et al., bioRxiv preprint (December 2025), examining measurement bias and DC offset mitigation. Not peer reviewed.</p>
+          </div>
+          <a class="gallery-link" href="./assets/DC%20Offsets%20Biorxiv.pdf" download>Download DC offset preprint (PDF)</a>
+        <a class="gallery-link" href="https://doi.org/10.64898/2025.12.08.691908" target="_blank" rel="noopener noreferrer">Read preprint online</a>
+          <a class="gallery-link" href="./projects/electrochemical-safety.html">Explore electrochemical safety project</a>
         </article>
         <article class="gallery-item" data-type="presentation">
           <div>
@@ -782,15 +422,16 @@
             <h3>Minimally Invasive Nerve Layer Identification Using PS-OCT for Optimized Electrode Placement in PTNS</h3>
             <p>Neurosurgery Day presentation describing a 23-gauge PS-OCT needle probe and porcine validation workflow.</p>
           </div>
-          <a class="gallery-link" href="./assets/2024_10_11_NeurosurgeryDay.pptx" target="_blank" rel="noopener noreferrer">Open PPTX</a>
+          <a class="gallery-link" href="./assets/2024_10_11_NeurosurgeryDay.pptx" download>Download Neurosurgery Day presentation (PPTX)</a>
+        <a class="gallery-link" href="./projects/ps-oct-probe.html">Explore PS-OCT probe project</a>
         </article>
         <article class="gallery-item" data-type="document">
           <div>
             <p class="section-label">Commercialization</p>
             <h3>AccuGyd Phase 2 Commercialization Plan</h3>
-            <p>Device commercialization plan covering a translational path, market-facing strategy, and product-development considerations.</p>
+            <p>Reference material on MRI-guided neurosurgery commercialization, market strategy, and product development. Authorship or a direct project role is not established by the supplied files.</p>
           </div>
-          <a class="gallery-link" href="./assets/AccuGyd%20phase%202%20commercialization%20plan_1071210933.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+          <a class="gallery-link" href="./assets/AccuGyd%20phase%202%20commercialization%20plan_1071210933.pdf" target="_blank" rel="noopener noreferrer">View AccuGyd commercialization plan (PDF)</a>
         </article>
         <article class="gallery-item" data-type="document">
           <div>
@@ -798,15 +439,27 @@
             <h3>BR41N.IO BCI Hackathon Result</h3>
             <p>Public post documenting a 3rd place result in the BCI Data Analysis Projects division.</p>
           </div>
-          <a class="gallery-link" href="./assets/Hackathon%20Post.txt" target="_blank" rel="noopener noreferrer">Open TXT</a>
+          <a class="gallery-link" href="https://www.linkedin.com/posts/ricardo-s%C3%A1nchez-085571274_im-incredibly-proud-of-my-team-nicholas-ugcPost-7454571436125593600-5vjt/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEMAuiUBiPTCmjpEis2veD8OGaMMKOL1H88" target="_blank" rel="noopener noreferrer">View Post</a>
+        <a class="gallery-link" href="./projects/bci-hackathon.html">Explore hackathon project</a>
         </article>
         <article class="gallery-item" data-type="document">
           <div>
             <p class="section-label">Resume</p>
             <h3>Resume PDF</h3>
-            <p>One-page resume with education, project details, technical skills, and contact information.</p>
+            <p>Updated August 2026 resume: two pages covering education, medical device projects, publications, and technical skills.</p>
           </div>
-          <a class="gallery-link" href="./20260610_Resume.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+          <a class="gallery-link" href="./20260824_RicardoResume.pdf" target="_blank" rel="noopener noreferrer">View updated resume (PDF)</a>
+        </article>
+
+        <article class="gallery-item" data-type="presentation">
+          <div><p class="section-label">Hackathon presentation</p><h3>Stroke Rehabilitation BCI Data Analysis</h3><p>Lobes of Confusion’s motor imagery classification approach, results, and conclusions.</p></div>
+          <a class="gallery-link" href="./projects/bci-hackathon.html#presentation">Watch team presentation</a>
+          <a class="gallery-link" href="./assets/2026_Hackathon-presentation.pptx" download>Download hackathon slides (PPTX)</a>
+        </article>
+        <article class="gallery-item" data-type="document">
+          <div><p class="section-label">Award certificate</p><h3>BR41N.IO Third-Place Winner Certificate</h3><p>g.tec medical engineering certificate for Lobes of Confusion, BCI Data Analysis Projects, 2026.</p></div>
+          <a class="gallery-link" href="./assets/3rd-place-winner-2026-data-analysis-certificate%20%281%29.pdf" target="_blank" rel="noopener noreferrer">View winner certificate (PDF)</a>
+          <a class="gallery-link" href="./projects/bci-hackathon.html">Explore hackathon project</a>
         </article>
       </div>
     </div>
@@ -834,35 +487,18 @@
           <p>Peripheral nerve stimulation, electrochemical safety, PS-OCT-guided probe systems, image-guided devices, nerve modeling, and translational studies for bladder neuromodulation.</p>
           <div class="hero-btns" style="justify-content:flex-start;margin-top:1.25rem;">
             <a class="btn btn-primary" href="mailto:rsanchez24@wisc.edu">Email Ricardo</a>
-            <a class="btn btn-outline" href="./20260610_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+            <a class="btn btn-outline" href="./20260824_RicardoResume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  </main>
   <footer>
     <p>Built as a static HTML/CSS/JS portfolio for GitHub Pages.</p>
   </footer>
 
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
-
-    function filterGallery(type, btn) {
-      document.querySelectorAll(".tab-btn").forEach((button) => button.classList.remove("active"));
-      btn.classList.add("active");
-
-      document.querySelectorAll(".gallery-item").forEach((item) => {
-        const shouldShow = type === "all" || item.dataset.type === type;
-        item.dataset.hidden = shouldShow ? "false" : "true";
-      });
-    }
-  </script>
+  <script src="./assets/site.js" defer></script>
 </body>
 </html>
